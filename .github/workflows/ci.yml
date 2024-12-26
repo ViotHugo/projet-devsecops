@@ -29,6 +29,11 @@ jobs:
         run: |
           venv/bin/python -m pytest
 
+      - name: Static code analysis
+        run: |
+          venv/bin/pip install bandit
+          venv/bin/bandit -r .
+
       - name: Build Docker image
         run: |
           docker build -t flask-devsecops .
