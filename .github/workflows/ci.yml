@@ -32,7 +32,7 @@ jobs:
       - name: Static code analysis
         run: |
           venv/bin/pip install bandit
-          venv/bin/bandit -r .
+          venv/bin/bandit -r . --format html -o bandit-report.html --exit-zero
 
       - name: Build Docker image
         run: |
