@@ -34,6 +34,7 @@ jobs:
           docker build -t flask-devsecops .
 
       - name: Scan Docker image for vulnerabilities
-        run: |
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
-          trivy image flask-devsecops
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: flask-devsecops
+        
