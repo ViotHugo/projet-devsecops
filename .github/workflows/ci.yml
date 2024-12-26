@@ -28,3 +28,12 @@ jobs:
       - name: Run tests
         run: |
           venv/bin/python -m pytest
+
+      - name: Build Docker image
+        run: |
+          docker build -t flask-devsecops .
+
+      - name: Scan Docker image for vulnerabilities
+        run: |
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
+          trivy image flask-devsecops
